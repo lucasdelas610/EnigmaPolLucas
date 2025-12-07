@@ -1,4 +1,29 @@
-<<<<<<< HEAD
+import menu
+
+def inicio():
+    while True:
+        menu.mostrar_menu()
+        opcio = input("Tria una opcio: ")
+
+        if opcio == '1':
+            print("Has triat xifrar...")
+            # AUN TENEMOS QUE HACER ESTO 
+            
+        elif opcio == '2':
+            print("Has triat desxifrar...")
+            # AUN TENEMOS QUE HACER ESTO 
+            
+        elif opcio == '3':
+            print("Has triat editar rotors...")
+            # AUN TENEMOS QUE HACER ESTO 
+            
+        elif opcio == '4':
+            print("has sortit del programa")
+            break
+        else:
+            print("Opcio no valida.")
+
+
 def preprocesar_missatge(text):
     # Variable buida per anar guardant el missatge net
     resultat = ""
@@ -14,23 +39,4 @@ def preprocesar_missatge(text):
             resultat = resultat + lletra
             
     return resultat
-=======
-def mostrar_menu():
-    print()
-    print("ENIGMA:")
-    print("-------------------------")
-    print("1. Xifrar missatge")
-    print("2. Desxifrar missatge")
-    print("3. Editar rotors")
-    print("4. Sortir")
-    print()
 
-# Codi principal
-while True:
-    mostrar_menu()
-    opcio = input("Tria una opcio: ")
-    
-    if opcio == '4':
-        print("Has sortit del programa")
-        break
->>>>>>> origin/main
