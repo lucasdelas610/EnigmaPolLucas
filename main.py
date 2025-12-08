@@ -1,5 +1,26 @@
 import menu
 
+
+def cargar_rotor(nom):
+    ruta = "text/" + nom
+    f = open(ruta, "r")  # Obrim el fitxer
+    linies = f.readlines()
+    f.close()
+   
+    # La primera linia es el cablejat
+    cablejat = linies[0].strip()
+   
+    # La segona es el notch. Si falta, es Z
+    if len(linies) > 1:
+        notch = linies[1].strip()
+    else:
+        notch = "Z"
+       
+    return cablejat, notch
+
+
+
+
 def inicio():
     while True:
         menu.mostrar_menu()
