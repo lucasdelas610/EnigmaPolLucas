@@ -22,6 +22,12 @@ def cargar_rotor(nom):
 
 
 def inicio():
+
+    r1 = cargar_rotor("text/Rotor1.txt")
+    r2 = cargar_rotor("text/Rotor2.txt")
+    r3 = cargar_rotor("text/Rotor3.txt")
+    print("Rotores cargados")
+
     while True:
         menu.mostrar_menu()
         opcio = input("Tria una opcio: ")
