@@ -16,13 +16,14 @@ def inicio():
         elif opcio == '3':
             print("Has triat editar rotors...")
             # AUN TENEMOS QUE HACER ESTO 
-            
+
         elif opcio == '4':
             print("has sortit del programa")
             break
         else:
             print("Opcio no valida.")
 
+inicio()
 
 def preprocesar_missatge(text):
     # Variable buida per anar guardant el missatge net
