@@ -274,8 +274,36 @@ def inicio():
             print("Guardado en text/desxifrat.txt")
             
         elif opcio == '3':
-            print("Has triat editar rotors...")
-            # AUN TENEMOS QUE HACER ESTO 
+            rotor = input("Quin rotor vols editar?: " )
+            nom_fitxer = ""
+
+            if rotor == '1':
+                nom_fitxer = "text/Rotor1.txt"
+            elif rotor == '2':
+                nom_fitxer = "text/Rotor2.txt"
+            elif rotor == '3':
+                nom_fitxer = "text/Rotor3.txt"
+            
+            if nom_fitxer != "": #si ha escrit un numero diferent a res, o sigui 1 2 o 3, es segueix, si no surt error
+                nou_cablejat = input("Escriu la nova llista de 26 lletres sense repetir: ")
+                nou_cablejat = nou_cablejat.upper()
+
+                
+                notch = input("Escriu la lletra del Notch: ")
+                notch = notch.upper()
+                
+                f_rotor = open(nom_fitxer, "w")
+                f_rotor.write(nou_cablejat + "\n") # Guardem el fitxer
+                f_rotor.write(notch)               
+                f_rotor.close()
+                
+                print("Rotor guardat.")
+                
+                r1 = cargar_rotor("Rotor1.txt") #recarguem els rotors
+                r2 = cargar_rotor("Rotor2.txt")
+                r3 = cargar_rotor("Rotor3.txt")
+            else:
+                print("Rotor incorrecte.")
 
         elif opcio == '4':
             print("has sortit del programa")
