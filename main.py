@@ -34,7 +34,37 @@ def inicio():
 
         if opcio == '1':
             print("Has triat xifrar...")
-            # AUN TENEMOS QUE HACER ESTO 
+
+            # Pedimos las 3 letras directamente
+            pos1 = input("Lletra Rotor 1: ")
+            pos2 = input("Lletra Rotor 2: ")
+            pos3 = input("Lletra Rotor 3: ")
+            
+            # Las pasamos a mayusculas
+            pos1 = pos1.upper()
+            pos2 = pos2.upper()
+            pos3 = pos3.upper()
+            
+            print("Configuracio guardada: " + pos1 + " " + pos2 + " " + pos3)
+            
+            print("Llegint el missatge...")
+            
+            # Abrimos el archivo
+            f = open("text/Missatge.txt", "r")
+            
+            # Leemos todo lo que hay dentro y lo guardamos en la variable 'missatge'
+            missatge = f.read()
+            f.close()
+            
+            print("Missatge original: " + missatge)
+
+            print("Limpiando el mensaje...")
+            
+            # Limpiamos el mensaje usando la función de abajo
+            missatge_net = preprocesar_missatge(missatge)
+            
+            print("Mensaje limpio: " + missatge_net)
+
             
         elif opcio == '2':
             print("Has triat desxifrar...")
