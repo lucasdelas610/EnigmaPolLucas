@@ -173,7 +173,105 @@ def inicio():
 
         elif opcio == '2':
             print("Has triat desxifrar...")
-            # AUN TENEMOS QUE HACER ESTO 
+
+            # Pedir posiciones
+            pos1 = input("Lletra Rotor 1: ").upper()
+            pos2 = input("Lletra Rotor 2: ").upper()
+            pos3 = input("Lletra Rotor 3: ").upper()
+
+            print("Configuracio guardada: " + pos1 + " " + pos2 + " " + pos3)
+
+            # Leer fichero xifrado
+            print("Llegint el missatge xifrat...")
+            f = open("text/Xifrat.txt", "r")
+            missatge = f.read()
+            f.close()
+            print("Missatge xifrat original: " + missatge)
+
+            abecedario = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            missatge_desxifrat = ""
+            
+            cables1 = r1[0]
+            cables2 = r2[0]
+            cables3 = r3[0]
+
+            # Convertir letras iniciales a números
+            num1 = 0
+            for lletra in abecedario:
+                if lletra == pos1: break 
+                num1 = num1 + 1
+            
+            num2 = 0
+            for lletra in abecedario:
+                if lletra == pos2: break
+                num2 = num2 + 1
+                
+            num3 = 0
+            for lletra in abecedario:
+                if lletra == pos3: break
+                num3 = num3 + 1
+
+            for lletra_xifrada in missatge:
+                num1 = num1 + 1
+                if num1 == 26:
+                    num1 = 0
+                    num2 = num2 + 1
+                    if num2 == 26:
+                        num2 = 0
+                        num3 = num3 + 1
+                        if num3 == 26:
+                            num3 = 0
+                
+                # Convertimos letra a numero
+                indice = 0
+                for l in abecedario:
+                    if l == lletra_xifrada: break
+                    indice = indice + 1
+
+                # ROTOR 3
+                indice = (indice + num3) % 26
+                # Buscamos qué letra del abecedario corresponde a este indice
+                letra_buscada = abecedario[indice]
+                # Y ahora buscamos dónde está esa letra en los cables
+                indice = 0
+                for cable in cables3:
+                    if cable == letra_buscada: break
+                    indice = indice + 1
+                indice = (indice - num3) % 26
+
+                # ROTOR 2
+                indice = (indice + num2) % 26
+                letra_buscada = abecedario[indice]
+                
+                indice = 0
+                for cable in cables2:
+                    if cable == letra_buscada: break
+                    indice = indice + 1
+                
+                indice = (indice - num2) % 26
+
+                # ROTOR 1
+                indice = (indice + num1) % 26
+                letra_buscada = abecedario[indice]
+                
+                indice = 0
+                for cable in cables1:
+                    if cable == letra_buscada: break
+                    indice = indice + 1
+                
+                indice = (indice - num1) % 26
+
+                # Guardamos la letra final
+                letra_final = abecedario[indice]
+                missatge_desxifrat = missatge_desxifrat + letra_final
+            
+            print("MISSATGE ORIGINAL: " + missatge_desxifrat)
+            
+            # Guardamos en desxifrat.txt
+            f_salida = open("text/desxifrat.txt", "w")
+            f_salida.write(missatge_desxifrat)
+            f_salida.close()
+            print("Guardado en text/desxifrat.txt")
             
         elif opcio == '3':
             print("Has triat editar rotors...")
