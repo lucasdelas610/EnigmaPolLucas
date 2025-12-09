@@ -46,7 +46,7 @@ def inicio():
             pos3 = pos3.upper()
             
             print("Configuracio guardada: " + pos1 + " " + pos2 + " " + pos3)
-            
+
             print("Llegint el missatge...")
             
             # Abrimos el archivo
@@ -65,7 +65,112 @@ def inicio():
             
             print("Mensaje limpio: " + missatge_net)
 
+            print("Xifrant missatge...")
             
+            abecedario = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            missatge_xifrat = "" 
+            
+            cables1 = r1[0]
+            cables2 = r2[0]
+            cables3 = r3[0]
+
+            # Buscamos el numero del Rotor 1
+            num1 = 0
+            for lletra in abecedario:
+                if lletra == pos1:
+                    break 
+                num1 = num1 + 1
+            
+            # Buscamos el numero del Rotor 2 
+            num2 = 0
+            for lletra in abecedario:
+                if lletra == pos2:
+                    break
+                num2 = num2 + 1
+                
+            # Buscamos el numero del Rotor 3
+            num3 = 0
+            for lletra in abecedario:
+                if lletra == pos3:
+                    break
+                num3 = num3 + 1
+
+        
+            for lletra_original in missatge_net:
+                
+                # Giro de rotores
+                num1 = num1 + 1
+                
+                # Si se pasa de la z, vuelve a la a
+                if num1 == 26:
+                    num1 = 0
+                    
+                    # Mueve el Rotor 2
+                    num2 = num2 + 1
+                    if num2 == 26:
+                        num2 = 0
+                        
+                        # Mueve el Rotor 3
+                        num3 = num3 + 1
+                        if num3 == 26:
+                            num3 = 0
+            
+
+                #convertimos la letra a numero 
+                indice = 0
+                for l in abecedario:
+                    if l == lletra_original: break
+                    indice = indice + 1
+                
+                #rotor 1
+                indice = (indice + num1) % 26      # Sumar posicion
+                letra_salida = cables1[indice]     # Cambiar letra
+                
+                # Buscamos numero de la nueva letra
+                indice = 0
+                for l in abecedario:
+                    if l == letra_salida: break
+                    indice = indice + 1
+                
+                indice = (indice - num1) % 26      # Restar posicion
+                
+                #rotor 2
+                indice = (indice + num2) % 26
+                letra_salida = cables2[indice]
+                
+                indice = 0
+                for l in abecedario:
+                    if l == letra_salida: break
+                    indice = indice + 1
+                
+                indice = (indice - num2) % 26
+                
+                # rotor 3
+                indice = (indice + num3) % 26
+                letra_salida = cables3[indice]
+                
+                indice = 0
+                for l in abecedario:
+                    if l == letra_salida: break
+                    indice = indice + 1
+                    
+                indice = (indice - num3) % 26
+
+                # convertimos el numero final a letra 
+                letra_final = abecedario[indice]
+                missatge_xifrat = missatge_xifrat + letra_final
+
+            print("RESULTAT FINAL: " + missatge_xifrat)
+
+            
+            # Guardamos en archivo
+            f_salida = open("text/Xifrat.txt", "w")
+            f_salida.write(missatge_xifrat)
+            f_salida.close()
+            print("Guardado en text/Xifrat.txt")
+                
+            
+
         elif opcio == '2':
             print("Has triat desxifrar...")
             # AUN TENEMOS QUE HACER ESTO 
