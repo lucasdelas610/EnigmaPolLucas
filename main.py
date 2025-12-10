@@ -1,6 +1,6 @@
 import menu
 
-
+ 
 def cargar_rotor(nom):
     ruta = "text/" + nom
     f = open(ruta, "r")  # Obrim el fitxer
