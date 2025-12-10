@@ -19,13 +19,27 @@ def cargar_rotor(nom):
     return cablejat, notch
 
 
+def preprocesar_missatge(text):
+    # Variable buida per anar guardant el missatge net
+    resultat = ""
+    
+    # Definim manualment quines lletres acceptem (l'abecedari)
+    lletres_valides = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    
+    # Recorrem el text lletra per lletra convertint-ho tot a majuscules al moment
+    for lletra in text.upper():
+        # Si la lletra esta a la llista de valides...
+        if lletra in lletres_valides:
+            # ...l'afegim al resultat final
+            resultat = resultat + lletra
+            
+    return resultat
 
 
 def inicio():
-
-    r1 = cargar_rotor("text/Rotor1.txt")
-    r2 = cargar_rotor("text/Rotor2.txt")
-    r3 = cargar_rotor("text/Rotor3.txt")
+    r1 = cargar_rotor("Rotor1.txt")       
+    r2 = cargar_rotor("Rotor2.txt")
+    r3 = cargar_rotor("Rotor3.txt")
     print("Rotores cargados")
 
     while True:
@@ -58,8 +72,7 @@ def inicio():
             
             print("Missatge original: " + missatge)
 
-            print("Limpiando el mensaje...")
-            
+
             # Limpiamos el mensaje usando la función de abajo
             missatge_net = preprocesar_missatge(missatge)
             
@@ -182,7 +195,6 @@ def inicio():
             print("Configuracio guardada: " + pos1 + " " + pos2 + " " + pos3)
 
             # Leer fichero xifrado
-            print("Llegint el missatge xifrat...")
             f = open("text/Xifrat.txt", "r")
             missatge = f.read()
             f.close()
