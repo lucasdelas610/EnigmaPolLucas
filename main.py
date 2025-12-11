@@ -29,7 +29,6 @@ def inicio(): #en aquest arxiu main tenim el codi net amb nomes una funcio per a
             missatge_net = funciones.preprocesar_missatge(missatge) #truca la funcio preprocessar missatge
             print("Mensaje limpio: " + missatge_net)
             
-            # 3. Llamamos a la logica
             resultado = funciones.xifrar_logica(missatge_net, r1, r2, r3, pos1, pos2, pos3) #ara truca la funcio per poder xifrar el missatge
             
             print("Missatge xifrat: " + resultado)
@@ -39,15 +38,12 @@ def inicio(): #en aquest arxiu main tenim el codi net amb nomes una funcio per a
             f_salida.close()
             print("Guardado en text/Xifrat.txt")
 
-
         elif opcio == '2':
             print("Has triat desxifrar...")
-            
+            # demanem la configuració inicial
             pos1 = input("Lletra Rotor 1: ").upper()
             pos2 = input("Lletra Rotor 2: ").upper()
             pos3 = input("Lletra Rotor 3: ").upper()
-
-            print("Llegint el missatge xifrat...")
             
             f = open("text/Xifrat.txt", "r")
             missatge = f.read()
@@ -59,7 +55,7 @@ def inicio(): #en aquest arxiu main tenim el codi net amb nomes una funcio per a
             print("MISSATGE ORIGINAL: " + resultado)
             
             f_salida = open("text/desxifrat.txt", "w")
-            f_salida.write(resultado)
+            f_salida.write(resultado) # ho guardem en un fitxer nou
             f_salida.close()
             print("Guardado en text/desxifrat.txt")
             
@@ -79,7 +75,6 @@ def inicio(): #en aquest arxiu main tenim el codi net amb nomes una funcio per a
                 funciones.guardar_rotor_modificat(nom_fitxer, nou_cablejat, notch) #truquem aquesta funcio per guardar-la
                 print("Rotor guardat.")
                 
-          
                 r1 = funciones.cargar_rotor("Rotor1.txt") #tornem a carregar tots els rotors
                 r2 = funciones.cargar_rotor("Rotor2.txt")
                 r3 = funciones.cargar_rotor("Rotor3.txt")
@@ -92,5 +87,4 @@ def inicio(): #en aquest arxiu main tenim el codi net amb nomes una funcio per a
         else:
             print("Opcio no valida.") #si escrius un altre numeroq ue no sigui de l'1 al 4, apareix aquest missatge
 
-if __name__ == "__main__":
-    inicio()
+inicio()

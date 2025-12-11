@@ -1,27 +1,22 @@
 def cargar_rotor(nom):
     ruta = "text/" + nom # busquem l'arxiu a la carpeta
     f = open(ruta, "r")
-    linies = f.readlines()
+    linies = f.readlines() # llegim la info del fitxer
     f.close()
     
-
     cablejat = linies[0].strip()
-    
     if len(linies) > 1:
         notch = linies[1].strip()
     else:
-        notch = "Z"
-        
+        notch = "Z" # si no en té, posem la Z  
     return cablejat, notch
 
-
-
-def preprocesar_missatge(text):
+def preprocesar_missatge(text):  # deixem el text net per xifrar
     resultat = ""
     lletres_valides = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     for lletra in text.upper():
         if lletra in lletres_valides:
-            resultat = resultat + lletra
+            resultat = resultat + lletra # treiem espais
     return resultat
 
 def guardar_rotor_modificat(nom_fitxer, nou_cablejat, notch): # aqui guardem lo que l'usuari escrigui
@@ -141,8 +136,6 @@ def desxifrar_logica(missatge, r1, r2, r3, pos1, pos2, pos3): # funcio entera pe
         if lletra == pos3:
             break 
         num3 = num3 + 1
-
-
 
     for lletra_xifrada in missatge: # recorrem tot el text xifrat
         num1 = num1 + 1 # actualitzem posicio dels rotors
