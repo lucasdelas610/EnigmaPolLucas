@@ -76,21 +76,26 @@ def inicio(): #en aquest arxiu main tenim el codi net amb nomes una funcio per a
                 nou_cablejat = input("Escriu la nova llista de 26 lletres: ").upper() #demanem combinacio de lletres per canviar un rotor
                 notch = input("Escriu la lletra del Notch: ").upper()
                 
-                funciones.guardar_rotor_modificat(nom_fitxer, nou_cablejat, notch) #truquem aquesta funcio per guardar-la
+                exito = funciones.guardar_rotor_modificat(nom_fitxer, nou_cablejat, notch) #truquem aquesta funcio per guardar-la
                 print("Rotor guardat.")
                 
+                if exito == True:
+                    print("Rotor guardat correctament.")
           
-                r1 = funciones.cargar_rotor("Rotor1.txt") #tornem a carregar tots els rotors
-                r2 = funciones.cargar_rotor("Rotor2.txt")
-                r3 = funciones.cargar_rotor("Rotor3.txt")
+                    r1 = funciones.cargar_rotor("Rotor1.txt") #tornem a carregar tots els rotors
+                    r2 = funciones.cargar_rotor("Rotor2.txt")
+                    r3 = funciones.cargar_rotor("Rotor3.txt")
+                else:
+                    print("ERROR: Has d'escriure exactament 26 lletres.") #Ha de tenir 26 lletres
             else:
-                print("Rotor incorrecte.")
+                print("Rotor incorrecte.")  
+            
 
-        elif opcio == '4': # nomes surt del programa al escollir-la
+        elif opcio == '4': # Surt del programa al escollir aquesta funcio
             print("Has sortit del programa") 
             break
         else:
-            print("Opcio no valida.") #si escrius un altre numeroq ue no sigui de l'1 al 4, apareix aquest missatge
+            print("Opcio no valida.") #si escrius un altre numero que no sigui de l'1 al 4, apareix aquest missatge
 
 if __name__ == "__main__":
     inicio()
