@@ -75,20 +75,10 @@ def inicio(): #en aquest arxiu main tenim el codi net amb nomes una funcio per a
                 exito = funciones.guardar_rotor_modificat(nom_fitxer, nou_cablejat, notch) #truquem aquesta funcio per guardar-la
                 print("Rotor guardat.")
                 
-<<<<<<< HEAD
+                
                 r1 = funciones.cargar_rotor("Rotor1.txt") #tornem a carregar tots els rotors
                 r2 = funciones.cargar_rotor("Rotor2.txt")
                 r3 = funciones.cargar_rotor("Rotor3.txt")
-=======
-                if exito == True:
-                    print("Rotor guardat correctament.")
-          
-                    r1 = funciones.cargar_rotor("Rotor1.txt") #tornem a carregar tots els rotors
-                    r2 = funciones.cargar_rotor("Rotor2.txt")
-                    r3 = funciones.cargar_rotor("Rotor3.txt")
-                else:
-                    print("ERROR: Has d'escriure exactament 26 lletres.") #Ha de tenir 26 lletres
->>>>>>> origin/dev
             else:
                 print("Rotor incorrecte.")  
             
