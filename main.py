@@ -86,7 +86,7 @@ def inicio(): #en aquest arxiu main tenim el codi net amb nomes una funcio per a
             else:
                 print("Rotor incorrecte.")
 
-        elif opcio == '4': #l'opcio mes senzilla, nomes surt del programa al escollir-la
+        elif opcio == '4': # nomes surt del programa al escollir-la
             print("Has sortit del programa") 
             break
         else:

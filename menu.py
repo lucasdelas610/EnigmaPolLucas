@@ -1,4 +1,4 @@
-def mostrar_menu():
+def mostrar_menu(): #arxiu una mica inne
     print("ENIGMA:")
     print("-------------------------")
     print("1. Xifrar missatge")
