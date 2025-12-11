@@ -1,5 +1,5 @@
 def cargar_rotor(nom):
-    ruta = "text/" + nom # busquem l'arxiu a la carpeta
+    ruta = "text/" + nom # busquem l arxiu a la carpeta
     f = open(ruta, "r")
     linies = f.readlines() # llegim la info del fitxer
     f.close()
@@ -8,7 +8,7 @@ def cargar_rotor(nom):
     if len(linies) > 1:
         notch = linies[1].strip()
     else:
-        notch = "Z" # si no en té, posem la Z  
+        notch = "Z" # si no en te, posem la Z  
     return cablejat, notch
 
 def preprocesar_missatge(text):  # deixem el text net per xifrar
@@ -19,11 +19,14 @@ def preprocesar_missatge(text):  # deixem el text net per xifrar
             resultat = resultat + lletra # treiem espais
     return resultat
 
-def guardar_rotor_modificat(nom_fitxer, nou_cablejat, notch): # aqui guardem lo que l'usuari escrigui
-    f_rotor = open(nom_fitxer, "w")
+def guardar_rotor_modificat(nom_fitxer, nou_cablejat, notch):
+    if len(nou_cablejat) != 26:
+        return False # mirem que siguin just 26 lletres, i si no retorna fals 
+    f_rotor = open(nom_fitxer, "w") #si esta be, guardem l arxiu
     f_rotor.write(nou_cablejat + "\n") 
     f_rotor.write(notch)               
     f_rotor.close()
+    return True 
 
 def xifrar_logica(missatge_net, r1, r2, r3, pos1, pos2, pos3): #funcio entera per poder xifrar el missatge
     abecedario = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -62,13 +65,13 @@ def xifrar_logica(missatge_net, r1, r2, r3, pos1, pos2, pos3): #funcio entera pe
                 if num3 == 26:
                     num3 = 0
 
-        indice = 0 # busquem la posició a l'abecedari
+        indice = 0 # busquem la posició a l abecedari
         for l in abecedario:
             if l == lletra_original: 
                 break
             indice = indice + 1
 
-        """(en aquesta part hem fet servir ajuda de l'IA per solucionar un error ja que la nostra logica implementada no funcionava del tot)"""
+        """(en aquesta part hem fet servir ajuda de l IA per solucionar un error ja que la nostra logica implementada no funcionava del tot)"""
         # Rotor 1
         indice = (indice + num1) % 26
         letra_salida = cables1[indice]
@@ -78,7 +81,7 @@ def xifrar_logica(missatge_net, r1, r2, r3, pos1, pos2, pos3): #funcio entera pe
                 break
             indice = indice + 1
         indice = (indice - num1) % 26
-        """(en aquesta part hem fet servir ajuda de l'IA per solucionar un error ja que la nostra logica implementada no funcionava del tot)"""
+        """(en aquesta part hem fet servir ajuda de l IA per solucionar un error ja que la nostra logica implementada no funcionava del tot)"""
 
         
         # Rotor 2

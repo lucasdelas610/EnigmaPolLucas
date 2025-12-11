@@ -69,24 +69,30 @@ def inicio(): #en aquest arxiu main tenim el codi net amb nomes una funcio per a
             elif rotor == '3': nom_fitxer = "text/Rotor3.txt"
             
             if nom_fitxer != "": 
-                nou_cablejat = input("Escriu la nova llista de 26 lletres: ").upper() #demanem combinacio de lletres per canviar un rotor
+                nou_cablejat = input("Escriu la nova llista de 26 lletres: ").upper()
                 notch = input("Escriu la lletra del Notch: ").upper()
                 
-                exito = funciones.guardar_rotor_modificat(nom_fitxer, nou_cablejat, notch) #truquem aquesta funcio per guardar-la
-                print("Rotor guardat.")
+                # Guardamos el resultado (True o False) en una variable 'exito'
+                exito = funciones.guardar_rotor_modificat(nom_fitxer, nou_cablejat, notch)
                 
-                
-                r1 = funciones.cargar_rotor("Rotor1.txt") #tornem a carregar tots els rotors
-                r2 = funciones.cargar_rotor("Rotor2.txt")
-                r3 = funciones.cargar_rotor("Rotor3.txt")
+                if exito == True:
+                    print("Rotor guardat correctament.")
+                    
+                    # Recarreguem para actualitzar els canvis
+                    r1 = funciones.cargar_rotor("Rotor1.txt")
+                    r2 = funciones.cargar_rotor("Rotor2.txt")
+                    r3 = funciones.cargar_rotor("Rotor3.txt")
+                else:
+                    # si no te 26 lletres, apareix aquest missatge
+                    print("has d'escriure 26 lletres.")
             else:
-                print("Rotor incorrecte.")  
+                print("Rotor incorrecte.")
             
 
         elif opcio == '4': # Surt del programa al escollir aquesta funcio
             print("Has sortit del programa") 
             break
         else:
-            print("Opcio no valida.") #si escrius un altre numero que no sigui de l'1 al 4, apareix aquest missatge
+            print("Opcio no valida.") #si escrius un altre numero que no sigui de l 1 al 4, apareix aquest missatge
 
 inicio()
